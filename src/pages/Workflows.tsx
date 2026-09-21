@@ -40,7 +40,7 @@ function WordRise({ text, className }: { text: string; className?: string }) {
             transition={{ delay: i * 0.04, duration: 0.5, ease: EASE_OUT }}
           >
             {w}
-            {i < text.split(' ').length - 1 ? ' ' : ''}
+            {i < text.split(' ').length - 1 ? ' ' : ''}
           </motion.span>
         </span>
       ))}
@@ -137,7 +137,7 @@ function TierGlyph({ tier }: { tier: 1 | 2 | 3 }) {
   }
   return (
     <svg width="88" height="48" viewBox="0 0 88 48" fill="none" aria-hidden="true">
-      <path d="M16 24 C30 24 30 10 44 10 M16 24 C30 24 30 24 44 24 M16 24 C30 24 30 38 44 38"
+      <path d="M16 24 C30 24 30 10 44 10 M16 24 C30 24 30 38 44 38"
         stroke="#A78BFA" strokeWidth="1.5" fill="none" />
       <path d="M52 10 C58 10 58 24 66 24 M52 38 C58 38 58 24 66 24 M52 24 H66"
         stroke="#A78BFA" strokeWidth="1.5" fill="none" />
