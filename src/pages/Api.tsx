@@ -490,26 +490,26 @@ function buildCurl(endpoint: BuilderEndpoint, domain: string, pid: string): stri
   const base = `https://${d}/api/v2/projects/${p}`;
   switch (endpoint) {
     case 'create-job':
-      return `curl -s -X POST ${AUTH_H} \
-  ${base}/jobs \
+      return `curl -s -X POST ${AUTH_H} \\
+  ${base}/jobs \\
   -d '{"name":"demo-job","script":"train.py","kernel":"python3","cpu":1,"memory":2}' | jq`;
     case 'start-run':
-      return `curl -s -X POST ${AUTH_H} \
+      return `curl -s -X POST ${AUTH_H} \\
   ${base}/jobs/$JOB_ID/runs -d '{}' | jq`;
     case 'list-runs':
-      return `curl -s -H "Authorization: Bearer $API_KEY" \
+      return `curl -s -H "Authorization: Bearer $API_KEY" \\
   "${base}/jobs/$JOB_ID/runs?sort=-created_at&pageSize=1" | jq '.job_runs[0].status'`;
     case 'create-model':
-      return `curl -s -X POST ${AUTH_H} \
-  ${base}/models \
+      return `curl -s -X POST ${AUTH_H} \\
+  ${base}/models \\
   -d '{"name":"Demo Model","description":"demo","disable_authentication":false}' | jq`;
     case 'create-build':
-      return `curl -s -X POST ${AUTH_H} \
-  ${base}/models/$MODEL_ID/builds \
+      return `curl -s -X POST ${AUTH_H} \\
+  ${base}/models/$MODEL_ID/builds \\
   -d '{"file_path":"predict.py","function_name":"predict","runtime_identifier":"'$RT_ID'"}' | jq`;
     case 'create-deployment':
-      return `curl -s -X POST ${AUTH_H} \
-  ${base}/models/$MODEL_ID/builds/$BUILD_ID/deployments \
+      return `curl -s -X POST ${AUTH_H} \\
+  ${base}/models/$MODEL_ID/builds/$BUILD_ID/deployments \\
   -d '{"cpu":1,"memory":2,"replicas":1}' | jq`;
   }
 }

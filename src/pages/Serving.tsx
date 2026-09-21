@@ -32,10 +32,10 @@ def predict(args):
     result = model.predict([[petal_length]])
     return {"result": result[0][0]}`;
 
-const CALL_CURL = `curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $API_KEY" \
-  https://modelservice.$CDSW_DOMAIN/model \
+const CALL_CURL = `curl -X POST \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $API_KEY" \\
+  https://modelservice.$CDSW_DOMAIN/model \\
   -d '{"accessKey":"mgc4w3rdi4...","request":{"petal_length": 1.4}}'`;
 
 const CALL_PYTHON = `import requests
