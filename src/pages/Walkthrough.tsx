@@ -117,12 +117,12 @@ while True:
 print(run.status)`;
 
 const TRIGGER_CURL = `# trigger
-curl -s -X POST -H "$AUTH" -H "$CT" \
+curl -s -X POST -H "$AUTH" -H "$CT" \\
   https://$CDSW_DOMAIN/api/v2/projects/$PROJECT_ID/jobs/$JOB_ID/runs -d '{}' | jq
 
 # poll latest run status
-curl -s -H "$AUTH" \
-  "https://$CDSW_DOMAIN/api/v2/projects/$PROJECT_ID/jobs/$JOB_ID/runs?sort=-created_at&pageSize=1" \
+curl -s -H "$AUTH" \\
+  "https://$CDSW_DOMAIN/api/v2/projects/$PROJECT_ID/jobs/$JOB_ID/runs?sort=-created_at&pageSize=1" \\
   | jq '.job_runs[0].status'`;
 
 const ACCESS_KEY_PY = `model = client.get_model(model.id, project_id)
