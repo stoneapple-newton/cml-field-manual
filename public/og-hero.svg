@@ -1,0 +1,102 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- faint engineering grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#1F2B38" stroke-opacity="0.35" stroke-width="1"/>
+    </pattern>
+    <!-- teal glow -->
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- vignette -->
+    <radialGradient id="vignette" cx="50%" cy="42%" r="75%">
+      <stop offset="55%" stop-color="#0B0F14" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0B0F14" stop-opacity="0.85"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#123F35" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#123F35" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22D3A7"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect width="1600" height="900" fill="#0B0F14"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" fill="url(#halo)"/>
+
+  <!-- faint monospace code fragments -->
+  <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="20" fill="#7C8A9A" fill-opacity="0.5">
+    <text x="96" y="140">$ cml jobs create --script train.py --cpu 2 --memory 4</text>
+    <text x="96" y="786">POST /api/v2/projects/{project_id}/jobs/{job_id}/runs</text>
+    <text x="1052" y="140">run.status: ENGINE_SUCCEEDED</text>
+    <text x="1052" y="786">parent_job_id: "ingest"</text>
+    <text x="660" y="826">schedule: "0 2 * * *"</text>
+  </g>
+
+  <!-- DAG edges -->
+  <g stroke="#22D3A7" stroke-width="2.5" stroke-opacity="0.9" filter="url(#glow-soft)">
+    <path d="M420 400 C 520 400, 520 300, 640 300" fill="none" marker-end="url(#arrow)"/>
+    <path d="M420 480 C 520 480, 520 580, 640 580" fill="none" marker-end="url(#arrow)"/>
+    <path d="M860 300 C 960 300, 960 410, 1060 430" fill="none" marker-end="url(#arrow)"/>
+    <path d="M860 580 C 950 580, 980 490, 1060 462" fill="none" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- ingest node -->
+  <g filter="url(#glow)">
+    <rect x="220" y="390" width="200" height="90" rx="14" fill="#10161E" stroke="#22D3A7" stroke-width="2"/>
+    <text x="320" y="443" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" font-weight="500" fill="#E6EDF3">ingest</text>
+    <circle cx="392" cy="410" r="6" fill="#22D3A7"/>
+  </g>
+
+  <!-- train node -->
+  <g filter="url(#glow)">
+    <rect x="640" y="255" width="220" height="90" rx="14" fill="#10161E" stroke="#22D3A7" stroke-width="2"/>
+    <text x="750" y="308" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" font-weight="500" fill="#E6EDF3">train</text>
+    <circle cx="832" cy="275" r="6" fill="#F5A524"/>
+  </g>
+
+  <!-- evaluate node (supporting) -->
+  <g filter="url(#glow-soft)">
+    <rect x="640" y="535" width="220" height="90" rx="14" fill="#10161E" stroke="#22D3A7" stroke-width="1.6" stroke-opacity="0.8"/>
+    <text x="750" y="588" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" font-weight="500" fill="#B7C2CE">evaluate</text>
+    <circle cx="832" cy="555" r="6" fill="#5BA8F5"/>
+  </g>
+
+  <!-- deploy node -->
+  <g filter="url(#glow)">
+    <rect x="1060" y="400" width="220" height="92" rx="14" fill="#123F35" fill-opacity="0.5" stroke="#22D3A7" stroke-width="2.5"/>
+    <text x="1170" y="454" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" font-weight="600" fill="#22D3A7">deploy</text>
+    <circle cx="1252" cy="420" r="6" fill="#22D3A7"/>
+  </g>
+
+  <!-- status legend dots -->
+  <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="16" fill="#7C8A9A">
+    <circle cx="108" cy="560" r="5" fill="#22D3A7"/>
+    <text x="122" y="566">succeeded</text>
+    <circle cx="108" cy="592" r="5" fill="#F5A524"/>
+    <text x="122" y="598">scheduling</text>
+    <circle cx="108" cy="624" r="5" fill="#5BA8F5"/>
+    <text x="122" y="630">running</text>
+  </g>
+
+  <!-- title -->
+  <text x="800" y="700" text-anchor="middle" font-family="'Space Grotesk', ui-sans-serif, sans-serif" font-size="40" font-weight="700" letter-spacing="2" fill="#E6EDF3" fill-opacity="0.92">CML FIELD MANUAL</text>
+  <text x="800" y="738" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="18" fill="#7C8A9A">jobs · pipelines · api v2</text>
+
+  <!-- vignette on top -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

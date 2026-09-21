@@ -140,7 +140,7 @@ export default function Home() {
           aria-hidden="true"
           className="absolute inset-0 z-0 opacity-30 mix-blend-multiply"
           style={{
-            backgroundImage: 'url(/og-hero.png)',
+            backgroundImage: 'url(/og-hero.svg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             maskImage: 'radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 100%)',
