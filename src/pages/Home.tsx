@@ -31,7 +31,7 @@ function KineticLine({ text, delayBase }: { text: string; delayBase: number }) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: delayBase + i * 0.018, duration: 0.6, ease: EASE_OUT }}
         >
-          {ch === ' ' ? ' ' : ch}
+          {ch === ' ' ? ' ' : ch}
         </motion.span>
       ))}
     </span>
